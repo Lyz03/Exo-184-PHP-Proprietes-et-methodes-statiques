@@ -4,7 +4,11 @@
 
 class Dragon extends Personnage {
 
+    private static int $numInstancesDragon = 0;
+
     public function __construct() {
+
+        self::$numInstancesDragon++;
         // Je redéfini le constructeur de cette classe, je souhaite que mes instances de dragon aient une propriété id
         // définie aléatoirement entre 1 et 99 999
         $this->setId(rand(1,99999));
@@ -20,6 +24,13 @@ class Dragon extends Personnage {
     // Je redéfini la méthode héritée setNom
     public function setNom($nom) {
         $this->nom = "Dragon ".$this->id;
+    }
+
+    /**
+     * @return int
+     */
+    public static function getNumInstancesDragon(): int {
+        return self::$numInstancesDragon;
     }
 
     // J'ajoute une méthode cracheFeu, pour le moment cette méthode ne fait rien du tout
